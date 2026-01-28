@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once("./connect/connect.php");
 
@@ -9,12 +10,15 @@ if (isset($_SESSION["message"])) {
   unset($_SESSION["message"]);
 }
 
-if ($SERVER["$REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $username = $_POST["username"];
   $password = $_POST["password"];
 
-  $sql = "SELECT * FROM users WHEN 'username'=$username";
+  $sql = "SELECT * FROM users WHERE username='$username'";
   $result = mysqli_query($conn, $sql);
+
+
+
 
   if (mysqli_num_rows($result) === 1) {
     $user = mysqli_fetch_assoc($result);
@@ -25,10 +29,10 @@ if ($SERVER["$REQUEST_METHOD"] == "POST") {
       header("Location:home.php?login=success");
       exit();
     } else {
-      $massage = "Password is invalid !";
+      $message = "Password is invalid !";
     }
   } else {
-    $massage = "Not Account found , Register Now";
+    $message = "Not Account found , Register Now";
     header("Location:register.php");
     exit();
   }
