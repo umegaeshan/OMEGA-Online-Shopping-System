@@ -6,6 +6,11 @@ require_once './connect/connect.php';
 
 $message = "";
 
+if (isset($_SESSION["message"])) {
+    $message = $_SESSION["message"];
+    unset($_SESSION["message"]);
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //get user values to variables 
