@@ -1,3 +1,43 @@
+<?php
+
+require_once("./connect/connect.php");
+
+$message = "";
+
+if (isset($_SESSION["message"])) {
+  $message = $_SESSION["message"];
+  unset($_SESSION["message"]);
+}
+
+if ($SERVER["$REQUEST_METHOD"] == "POST") {
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+
+  $sql = "SELECT * FROM users WHEN 'username'=$username";
+  $result = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($result) === 1) {
+    $user = mysqli_fetch_assoc($result);
+
+    if (password_verify($password, $user["password"])) {
+      $_SESSION["username"] = $user["username"];
+      $_SESSION["role"] = $user["role"];
+      header("Location:home.php?login=success");
+      exit();
+    } else {
+      $massage = "Password is invalid !";
+    }
+  } else {
+    $massage = "Not Account found , Register Now";
+    header("Location:register.php");
+    exit();
+  }
+}
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -16,22 +56,34 @@
           <h1>Log In</h1>
         </center>
       </div>
+
+      <div>
+        <?php if ($message != ""): ?>
+          <p style="color:red; background-color:aliceblue; padding:10px; border-radius:5px;">
+            <?php echo $message; ?>
+          </p>
+        <?php endif; ?>
+      </div>
+
       <div class="userName">
         <label>User Name</label>
         <br />
         <input type="text" name="username" required />
       </div>
+
       <div class="password">
         <label>Password</label>
         <br />
         <input type="password" name="password" required />
       </div>
+
       <div class="loginButtonClass">
         <button type="submit" name="login" class="loginButton" value="Log In">
           Log In
         </button>
         <br />
       </div>
+
       <div class="bottom-para">
         <center>
           <p>
@@ -40,6 +92,7 @@
           </p>
         </center>
       </div>
+
     </form>
   </div>
 </body>

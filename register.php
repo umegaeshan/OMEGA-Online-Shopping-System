@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //get user values to variables 
 
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $hash_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $email = $_POST['email'];
     $role = $_POST['role'];
 
@@ -21,11 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($check) > 0) {
         $message = "Email already exists!";
     } else {
-        $sql = "INSERT INTO users (username,password,email,role) VALUES ('$username','$password','$email' , '$role')";
+        $sql = "INSERT INTO users (username,password,email,role) VALUES ('$username','$hash_password','$email' , '$role')";
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['message'] = "Registration Successful!";
             header("Location:index.php");
+            exit();
         } else {
             $message = "Registration Error !" . $conn->errno;
         }
