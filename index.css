@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap");
+
+body {
+  background-color: rgb(2, 117, 211);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7rem;
+}
+
+form {
+  background-color: rgb(255, 255, 255);
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  box-shadow: 2px 2px 8px black;
+}
+
+input {
+  border-radius: 5px;
+  padding-left: 1rem;
+  padding: 5px;
+  border-style: none;
+  margin: 0.5rem;
+  width: 12rem;
+  box-shadow: 0px 0px 2px rgb(31, 15, 174);
+}
+
+a {
+  color: red;
+}
+
+.bottom-para {
+  font-size: 11px;
+}
+
+.loginButtonClass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginButtonClass .loginButton {
+  padding: 0.5rem;
+  border-radius: 20px;
+  width: 5rem;
+  border-style: none;
+  background-color: rgb(25, 31, 210);
+  color: white;
+}
+
+.registerButtonClass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerButtonClass .registerButton {
+  padding: 0.5rem;
+  border-radius: 20px;
+  width: 5rem;
+  border-style: none;
+  background-color: rgb(25, 31, 210);
+  color: white;
+}
+select {
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Funnel Sans", sans-serif; /* Matching your chosen font */
+  box-sizing: border-box; /* Crucial: ensures padding doesn't push width over 100% */
+  margin: 0.5rem;
+}
