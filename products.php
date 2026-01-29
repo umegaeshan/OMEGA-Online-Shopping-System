@@ -56,33 +56,20 @@
 
 
 
+    <div class="product-grid">
 
-
-    <div class="section">
-        <div class="product">
-            <div class="container py-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-3">
-                        <div class="card product-card border-0 rounded-4 shadow-sm">
-                            <div class="position-relative">
-                                <span class="badge bg-danger badge-custom">New Arrival</span>
-                                <div class="overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw0fHxoZWFkcGhvbmV8ZW58MHwwfHx8MTczNDc5NTEyM3ww&ixlib=rb-4.0.3&q=80&w=1080" class="card-img-top product-image" alt="Product Image">
-                                </div>
-                            </div>
-                            <div class="card-body p-3">
-                                <h5 class="card-title mb-2 fw-bold">Premium Wireless Headphones</h5>
-                                <p class="card-text text-muted mb-2">Experience crystal clear sound with our latest noise-cancelling
-                                    technology and premium build quality.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">$299.99</span>
-                                    <button class="btn btn-custom text-white px-4 py-2 rounded-pill">
-                                        Add to Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="product-card">
+            <div class="image-box">
+                <span class="badge">New Arrival</span>
+                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=1080" alt="Product">
+            </div>
+            <div class="card-body">
+                <h3>Premium Wireless Headphones</h3>
+                <p>Experience crystal clear sound with noise-cancelling tech.</p>
+                <div class="card-footer">
+                    <span class="price">$299.99</span>
+                    <button class="btn btn-details ms-5">Details</button>
+                    <button class="btn">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -90,7 +77,6 @@
 
 
     </div>
-
 
     <?php
     include 'includes/footer.php';

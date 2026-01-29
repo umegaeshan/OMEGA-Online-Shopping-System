@@ -54,3 +54,87 @@
   justify-content: center;
   align-items: center;
 }
+
+/* 1. THE GRID SYSTEM */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; /* Space between cards */
+  padding: 1rem;
+  margin: 3rem 3rem;
+}
+
+/* 2. THE CARD STYLING */
+.product-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.image-box {
+  position: relative;
+}
+
+.image-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Keeps image from looking squashed */
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px black;
+  font-weight: bolder;
+}
+
+.btn:hover {
+  background: #fbff19;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  box-shadow: 1px 1px 1px black;
+}
+
+.btn-details {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-details:hover {
+  background-color: rgb(235, 242, 245);
+}
