@@ -1,3 +1,9 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 .container content {
   width: 80%;
   margin-top: 3rem;
@@ -15,4 +21,44 @@ content {
   display: flex;
   align-items: right;
   justify-content: right;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 30% 65%;
+  grid-gap: 3%;
+  grid-template-areas: "a b";
+}
+
+.intro {
+  grid-area: "a";
+  margin-top: 2rem;
+  margin-left: 3rem;
+}
+
+.image-slider {
+  grid-area: "b";
+  margin-top: 2rem;
+}
+
+/* letter animation */
+
+.blur-in {
+  font-family: sans-serif;
+  font-size: 3rem;
+  /* Apply the animation */
+  animation: blur-text 3s ease-in-out forwards infinite;
+}
+
+@keyframes blur-text {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+    transform: scale(0.9); /* Optional: adds a slight zoom effect */
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+    transform: scale(1);
+  }
 }
