@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['message'] = "<p style='color:#07f003; background-color: #a8faa6; padding:10px; border:1px solid #07f003; border-radius:5px; font-family:sans-serif;'>
-                                        <strong>Error:</strong> Registration Succesfull ! .
+                                        <strong></strong> Registration Succesfull ! .
                                     </p>";
             header("Location:index.php");
             exit();
