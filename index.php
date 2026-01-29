@@ -29,10 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       header("Location:home.php?login=success");
       exit();
     } else {
-      $message = "Password is invalid !";
+      $message = "<p style='color:#d93025; background-color:#f7b4af; padding:10px; border:1px solid #d93025; border-radius:5px; font-family:sans-serif;'>
+                        <strong>Error:</strong> Password is invalid !.
+                    </p> ";
     }
   } else {
-    $message = "Not Account found , Register Now";
+    $message = " <p style='color:#d93025; background-color:#f7b4af; padding:10px; border:1px solid #d93025; border-radius:5px; font-family:sans-serif;'>
+                        <strong>Error:</strong> Not Account found , Register Now !.
+                    </p>   ";
     header("Location:register.php");
     exit();
   }
@@ -63,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <div>
         <?php if ($message != ""): ?>
-          <p style="color:red; background-color:aliceblue; padding:10px; border-radius:5px;">
-            <?php echo $message; ?>
+
+          <?php echo $message; ?>
           </p>
         <?php endif; ?>
       </div>

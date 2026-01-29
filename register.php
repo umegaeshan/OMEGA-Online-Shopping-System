@@ -24,16 +24,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $check = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
 
     if (mysqli_num_rows($check) > 0) {
-        $message = "Email already exists!";
+        $message = "<p style='color:#d93025; background-color:#f7b4af; padding:10px; border:1px solid #d93025; border-radius:5px; font-family:sans-serif;'>
+                        <strong>Error:</strong> This email is already registered.
+                    </p>";
     } else {
         $sql = "INSERT INTO users (username,password,email,role) VALUES ('$username','$hash_password','$email' , '$role')";
 
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['message'] = "Registration Successful!";
+            $_SESSION['message'] = "<p style='color:#07f003; background-color: #a8faa6; padding:10px; border:1px solid #07f003; border-radius:5px; font-family:sans-serif;'>
+                                        <strong>Error:</strong> Registration Succesfull ! .
+                                    </p>";
             header("Location:index.php");
             exit();
         } else {
-            $message = "Registration Error !" . $conn->errno;
+            $message = "<p style='color:#d93025; background-color:#f7b4af; padding:10px; border:1px solidrgb(227, 24, 10); border-radius:5px; font-family:sans-serif;'>
+                        <strong>Error:</strong> Registration Error !.
+                    </p>" . $conn->errno;
         }
     }
 }
@@ -61,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div>
                 <?php if ($message != ""): ?>
-                    <p style="color:red; background-color:aliceblue; padding:10px;"> <?php echo $message; ?></p>
+                    <?php echo $message; ?></p>
                 <?php endif; ?>
             </div>
 
