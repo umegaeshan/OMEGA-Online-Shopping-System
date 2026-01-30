@@ -41,18 +41,26 @@ $sql = "SELECT * FROM products WHERE price>=$min AND price<$max";
 
 
 if ($cat != 'all') {
-    $sql = $sql . " AND category='$cat'";
+    $sql = $sql . "AND category='$cat'";
 }
 
 if ($search != "search") {
-    $sql = $sql . " AND name LIKE '%$search%'";
+    $sql = $sql . "AND name LIKE '%$search%'";
 }
 
 
 $result = mysqli_query($conn, $sql);
 
 
+
+
+
+
+
 ?>
+
+
+
 
 
 
@@ -66,7 +74,7 @@ $result = mysqli_query($conn, $sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Products</title>
+    <title>Home page</title>
     <link rel="stylesheet" href="./styles/products.css">
 
 
@@ -116,29 +124,23 @@ $result = mysqli_query($conn, $sql);
 
 
     <div class="product-grid">
-        <?php
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-                <div class="product-card">
-                    <div class="image-box">
-                        <?php if ($row['is_new'] == 1) {  ?>
-                            <span class="badge">New Arrival</span>
-                        <?php } ?>
-                        <img src=<?php echo $row['image_url']  ?>alt=<?php echo $row['name']; ?>>
-                    </div>
-                    <div class="card-body">
-                        <h3><?php echo $row['name'] ?></h3>
-                        <p><?php echo $row['description'] ?></p>
-                        <div class="card-footer">
-                            <span class="price"><?php echo $row['price'] ?></span>
-                            <button class="btn btn-details ms-5">Details</button>
-                            <button class="btn">Add to Cart</button>
-                        </div>
-                    </div>
+
+        <div class="product-card">
+            <div class="image-box">
+                <span class="badge">New Arrival</span>
+                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=1080" alt="Product">
+            </div>
+            <div class="card-body">
+                <h3>Premium Wireless Headphones</h3>
+                <p>Experience crystal clear sound with noise-cancelling tech.</p>
+                <div class="card-footer">
+                    <span class="price">$299.99</span>
+                    <button class="btn btn-details ms-5">Details</button>
+                    <button class="btn">Add to Cart</button>
                 </div>
-        <?php }
-        } ?>
+            </div>
+        </div>
+
 
 
     </div>

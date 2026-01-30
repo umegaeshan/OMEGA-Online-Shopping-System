@@ -26,9 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (password_verify($password, $user["password"])) {
       $_SESSION["username"] = $user["username"];
       $_SESSION["role"] = $user["role"];
-      $_SESSION['message'] = "<p style='color:#07f003; background-color:#a8faa6; padding:10px; border:1px solid #07f003; border-radius:5px; font-family:sans-serif;'>
-                        <strong>Error:</strong> Login Successfull !.
-                    </p> ";
       header("Location:home.php?login=success");
       exit();
     } else {

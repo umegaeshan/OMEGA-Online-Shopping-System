@@ -1,23 +1,8 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "login register 28");
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
 session_start();
 
-$user = $_SESSION["username"];
-
-$message = "";
-
-
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +30,6 @@ $message = "";
     <center>
         <h1 class="blur-in">Welcome to My Shop</h1>
     </center>
-
 
     <div class="grid-container">
         <div class="intro">
