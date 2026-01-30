@@ -1,35 +1,34 @@
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">OMEGA</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="products.php">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">About Us</a>
-                    </li>
-                </ul>
-                <form class="d-flex  pe-5" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-secondary" type="submit">Search</button>
-                </form>
-                <div class="buttons pe-5">
-                    <a type="button" class="btn btn-light" href="index.php">Log In</a>
-                    <a type="button" class="btn btn-warning" href="register.php">Register</a>
-                </div>
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">OMEGA</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.php">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">About Us</a>
+                </li>
+            </ul>
+            <form class="d-flex  pe-5" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-secondary" type="submit">Search</button>
+            </form>
+
+
+            <?php if (isset($_SESSION["username"])) { ?>
                 <div class="user-profile">
                     <button type="button" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -45,6 +44,16 @@
                         </svg>
                     </button>
                 </div>
-            </div>
+            <?php } else {  ?>
+
+                <div class="buttons pe-5">
+                    <a type="button" class="btn btn-light" href="index.php">Log In</a>
+                    <a type="button" class="btn btn-warning" href="register.php">Register</a>
+                </div>
+            <?php }
+            ?>
+
+
         </div>
-    </nav>
+    </div>
+</nav>

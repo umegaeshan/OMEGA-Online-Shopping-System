@@ -1,3 +1,26 @@
+<?php
+
+$conn = mysqli_connect("localhost", "root", "", "login register 28");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+session_start();
+$user = $_SESSION["username"];
+
+$message_home = "";
+
+if (isset($_SESSION["message-home"])) {
+    $message_home = $_SESSION["message-home"];
+    unset($_SESSION["message-home"]);
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +47,11 @@
     <center>
         <h1 class="blur-in">Welcome to My Shop</h1>
     </center>
+    <?php
+    $_SESSION['message-home'] = "<p style='color:#07f003; background-color:#a8faa6; padding:10px; border:1px solid #07f003; border-radius:5px; font-family:sans-serif;'>
+         Welcome .'$user'!.
+    </p> ";
+    ?>
 
     <div class="grid-container">
         <div class="intro">
