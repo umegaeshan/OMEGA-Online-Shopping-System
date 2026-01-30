@@ -58,7 +58,7 @@ $result = mysqli_query($conn, $sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Home page</title>
+    <title>Product OMEGA</title>
     <link rel="stylesheet" href="./styles/products.css">
 
 
@@ -73,36 +73,37 @@ $result = mysqli_query($conn, $sql);
     ?>
 
     <div class="filter">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-            <div class="container-fluid">
-                <a class="navbar-brand ms-5 me-5" href="#">Filter</a>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle ms-5 me-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categorys
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Electric</a></li>
-                                <li><a class="dropdown-item" href="#">Shouse</a></li>
-                                <li><a class="dropdown-item" href="#">Cloths</a></li>
-                                <li><a class="dropdown-item" href="#">Computer</a></li>
-                                <li><a class="dropdown-item" href="#">Sport</a></li>
-
-                            </ul>
+        <form action="products.php" method="GET">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand ms-5 me-5" href="#">Filter</a>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav">
+                            <li class="nav-item ">
+                                <select name="category" class="ms-1 p-1">
+                                    <option class="dropdown-item" value="all">All Category</option>
+                                    <option class="dropdown-item" value="shouse">Shouse</option>
+                                    <option class="dropdown-item" value="cloths">Cloths</option]>
+                                    <option class="dropdown-item" value="computer">Computer</option>
+                                    <option class="dropdown-item" value="sport">Sport</option>
+                                </select>
+                        </ul>
                         </li>
 
                         <li class="price-filter mt-1 ms-5 me-5">
                             <label class="ms-5 me-5" style="color:white"> Min prices </label>
-                            <input type="number" name="min" placeholder="Min" style="padding-left: 1rem; width:5rem;">
+                            <input type="number" name="min_price" placeholder="Min" style="padding-left: 1rem; width:5rem;">
 
                             <label class="ms-5 me-5" style="color:white"> Max prices </label>
-                            <input type="number" name="max" placeholder="Max" style="padding-left: 1rem; width:5rem;">
+                            <input type="number" name="max_price" placeholder="Max" style="padding-left: 1rem; width:5rem;">
                         </li>
-                    </ul>
+                        <li> <button class="btn btn-secondary ms-5 me-5" type="submit">Apply Filter</button></li>
+                        <a href="products.php" class="btn btn-outline-danger btn-sm">Reset</a>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </form>
     </div>
 
 
@@ -128,7 +129,7 @@ $result = mysqli_query($conn, $sql);
                         <div class="card-footer">
                             <span class="price">$<?php echo $row['price']; ?></span>
                             <div class="btn-group">
-                                <button class="btn btn-details">Details</button>
+                                <button class="btn btn-details" href=" ">Details</button>
                                 <button class="btn">Add to Cart</button>
                             </div>
                         </div>

@@ -46,8 +46,9 @@ content {
 .blur-in {
   font-family: sans-serif;
   font-size: 3rem;
+  font-weight: bolder;
   /* Apply the animation */
-  animation: blur-text 3s ease-in-out forwards infinite;
+  animation: blur-text 3s ease-in-out forwards;
 }
 
 @keyframes blur-text {
