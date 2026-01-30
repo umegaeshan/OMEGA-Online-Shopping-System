@@ -129,7 +129,7 @@ $result = mysqli_query($conn, $sql);
                         <div class="card-footer">
                             <span class="price">$<?php echo $row['price']; ?></span>
                             <div class="btn-group">
-                                <button class="btn btn-details" href=" ">Details</button>
+                                <a class="btn btn-details" href=" details.php?id=<?php echo $row['id']; ?>">Details</a>
                                 <button class="btn">Add to Cart</button>
                             </div>
                         </div>
