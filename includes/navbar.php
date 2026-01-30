@@ -10,16 +10,16 @@
                     <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="products.php">Products</a>
+                    <a class="nav-link" href="">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user\my-order.php">My Orders</a>
+                    <a class="nav-link" href="../user/my-order.php">My Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Contact Us</a>
+                    <a class="nav-link" href="../Contact.php">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">About Us</a>
+                    <a class="nav-link" href="../about.php">About Us</a>
                 </li>
             </ul>
             <form class="d-flex  pe-5" role="search">

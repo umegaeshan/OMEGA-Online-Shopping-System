@@ -9,9 +9,6 @@ if (!$conn) {
 }
 
 
-
-
-
 ?>
 
 
@@ -27,7 +24,7 @@ if (!$conn) {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>My Orders</title>
-    <link rel="stylesheet" href="./styles/products.css">
+    <link rel="stylesheet" href="../styles/my-order.css">
 
 
 </head>
@@ -37,7 +34,7 @@ if (!$conn) {
 
     <?php
     // This pulls in the navbar
-    include 'includes\navbar.php';
+    include '../includes/navbar.php';
     ?>
 
 
@@ -46,10 +43,9 @@ if (!$conn) {
 
 
 
-    </div>
 
     <?php
-    include 'includes/footer.php';
+    include '../includes/footer.php';
     ?>
 
 </body>
