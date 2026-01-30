@@ -1,3 +1,68 @@
+<?php
+
+$conn = mysqli_connect("localhost", "root", "", "login register 28");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+
+// FILTERING CONDITIONS
+
+if (isset($_GET["category"])) {
+    $cat = $_GET["category"];
+} else {
+    $cat = "all";
+}
+
+if (isset($_GET["min_price"])) {
+    $min = $_GET["min_price"];
+} else {
+    $min = 0;
+}
+
+if (isset($_GET["max_price"])) {
+    $max = $_GET["max_price"];
+} else {
+    $max = 100000;
+}
+
+if (isset($_GET["search"])) {
+    $search = $_GET["search"];
+} else {
+    $search = "";
+}
+
+
+$sql = "SELECT * FROM products WHERE price>=$min AND price<$max";
+
+
+if ($cat != 'all') {
+    $sql = $sql . "AND category='$cat'";
+}
+
+if ($search != "search") {
+    $sql = $sql . "AND name LIKE '%$search%'";
+}
+
+
+$result = mysqli_query($conn, $sql);
+
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
