@@ -16,6 +16,8 @@ session_start();
 
     <?php if ($_SESSION['role'] == 'admin') { ?>
         <title>Admin Panal | OMEGA</title>
+    <?php } else { ?>
+        <title> Home Page | OMEGA </title>
     <?php } ?>
 
     <link rel="stylesheet" href="./styles/home.css">

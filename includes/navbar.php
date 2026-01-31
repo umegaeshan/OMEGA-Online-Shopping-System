@@ -15,13 +15,13 @@
                                 <a class="nav-link active" aria-current="page" href="home.php">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="products.php">Manage Products</a>
+                                <a class="nav-link" href="./admin/manage_products.php">Manage Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Manage Users</a>
+                                <a class="nav-link" href="./admin/manage_users.php">Manage Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="about.php">Order Management</a>
+                                <a class="nav-link " href="./admin/manage_orders.php">Order Management</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="contact.php">Contact Us</a>
@@ -58,8 +58,12 @@
                                     <a class="nav-link" href="products.php">Products</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Orders</a>
+                                    <a class="nav-link" href="./user/cart.php">My cart</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./user/orders.php">My Orders</a>
+                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link " href="contact.php">Contact Us</a>
                                 </li>

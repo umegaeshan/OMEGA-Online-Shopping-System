@@ -88,7 +88,7 @@ if (isset($_GET['id'])) {
                             <p class="text-muted"><?php echo $product['description'] ?></p>
 
                             <div class="mt-4">
-                                <button class="btn btn-primary btn-lg px-4">Add to Cart</button>
+                                <button class="btn btn-primary btn-lg px-4" href="user/cart.php">Add to Cart</button>
                                 <a href="products.php" class="btn btn-outline-secondary btn-lg ms-2">Back</a>
                             </div>
                         </div>
