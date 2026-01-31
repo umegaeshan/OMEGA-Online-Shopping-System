@@ -8,7 +8,7 @@
             <?php if (isset($_SESSION['role'])) { ?>
                 <?php if ($_SESSION['role'] == 'admin') { ?>
 
-                    <a class="navbar-brand" href="#">OMEGA<small class="logo-lable">ADMIN</small></a>
+                    <a class="navbar-brand" href="#">OMEGA<sup style="background-color: red; color:white ; font-size: 10px; padding:2px; margin:2px; border-radius:2px ;" class="logo-lable">ADMIN</sup></a>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">

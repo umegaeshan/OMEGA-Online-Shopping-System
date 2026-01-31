@@ -73,6 +73,9 @@ $user = mysqli_fetch_assoc($result);
                 <?php if ($user['role'] == 'admin') { ?>
                     <a href="home.php" class="btn btn-dark px-4">Go to Admin Panel</a>
                 <?php } ?>
+                <?php if ($user['role'] != 'admin') { ?>
+                    <a href="home.php" class="btn btn-dark px-4">Go to OMEGA Home</a>
+                <?php } ?>
             </div>
 
 
