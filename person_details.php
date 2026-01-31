@@ -38,9 +38,11 @@ $user = mysqli_fetch_assoc($result);
     <div class="container mt-5">
         <div class="profile-card mx-auto shadow p-5">
             <div class="text-center mb-4">
+
                 <?php if ($user['role'] == 'admin') { ?>
                     <div class="admin-badge mb-3">🛠️ System Administrator</div>
                 <?php } else { ?>
+
                     <div class="user-badge mb-3">👤 Valued Customer</div>
                 <?php } ?>
 
@@ -68,14 +70,18 @@ $user = mysqli_fetch_assoc($result);
             </div>
 
             <div class="mt-4 d-flex gap-2">
+
                 <a href="edit_profile.php" class="btn btn-primary px-4">Edit Profile</a>
                 <a href="logout.php" class="btn btn-danger">Log Out</a>
+
                 <?php if ($user['role'] == 'admin') { ?>
                     <a href="home.php" class="btn btn-dark px-4">Go to Admin Panel</a>
                 <?php } ?>
+
                 <?php if ($user['role'] != 'admin') { ?>
                     <a href="home.php" class="btn btn-dark px-4">Go to OMEGA Home</a>
                 <?php } ?>
+
             </div>
 
 

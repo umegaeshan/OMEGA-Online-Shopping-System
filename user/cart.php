@@ -18,6 +18,6 @@ if (isset($_GET['id'])) {
     }
 
     // 4. Redirect back to the shop immediately
-    header("Location: products.php");
+    header("Location: ../products.php");
     exit();
 }

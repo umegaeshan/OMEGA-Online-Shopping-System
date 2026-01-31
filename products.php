@@ -124,7 +124,7 @@ if (!$result) {
                             <span class="price">$<?php echo $row['price']; ?></span>
                             <div class="btn-group">
                                 <a class="btn btn-details" href="details.php?id=<?php echo $row['id']; ?>">Details</a>
-                                <a href="./user/cart.php?id=<?php echo $row['id']; ?>" class="btn">Add to Cart</a>
+                                <a href="user/cart.php?id=<?php echo $row['id']; ?>" class="btn">Add to Cart</a>
                             </div>
                         </div>
                     </div>

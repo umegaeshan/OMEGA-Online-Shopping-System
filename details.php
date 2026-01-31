@@ -56,6 +56,15 @@ if (isset($_GET['id'])) {
             border-radius: 5px;
             font-size: 12px;
         }
+
+
+        input {
+            padding-left: 1rem;
+            width: 5rem;
+            border-style: none;
+            border-radius: 1rem;
+            box-shadow: 0px 0px 3px blue;
+        }
     </style>
 </head>
 
@@ -86,9 +95,15 @@ if (isset($_GET['id'])) {
                             <h1 class="fw-bold"><?php echo $product['name'] ?></h1>
                             <h3 class="text-primary mb-3">$<?php echo $product['price'] ?></h3>
                             <p class="text-muted"><?php echo $product['description'] ?></p>
+                            <div class="quentity">
+                                <form action="details.php" method="GET">
+                                    <label> Select Quentity : </label>
+                                    <input class="quentity" type="number" name="quentity" value="1" max="100">
+                                </form>
+                            </div>
 
                             <div class="mt-4">
-                                <button class="btn btn-primary btn-lg px-4" href="user/cart.php">Add to Cart</button>
+                                <button class="btn btn-primary btn-lg px-4" href="user/cart.php?qut=<?php $_GET['quentity'] ?>">Add to Cart</button>
                                 <a href="products.php" class="btn btn-outline-secondary btn-lg ms-2">Back</a>
                             </div>
                         </div>
