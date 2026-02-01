@@ -75,7 +75,7 @@ if (!$result) {
         <form action="products.php" method="GET">
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand ms-5 me-5" href="#">Filter</a>
+                    <a class="navbar-brand ms-5 me-5" href="products.php">Filter</a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="nav-item">
