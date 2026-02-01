@@ -65,10 +65,38 @@ $result = mysqli_query($conn, $sql);
         background-color: #f1f1f1;
     }
 
+    /* 1. Add relative positioning to the table cell so the image stays near it */
+    .cart-table td:first-child {
+        position: relative;
+        width: 80px;
+        /* Keeps the column size steady */
+        height: 80px;
+        /* Keeps the row height steady */
+    }
+
     .product-img {
+        width: 70px;
+        height: 70px;
         border-radius: 4px;
         object-fit: cover;
         border: 1px solid #ddd;
+        transition: all 0.4s ease;
+        position: absolute;
+        /* Takes the image out of the normal layout flow */
+        top: 5px;
+        left: 5px;
+    }
+
+    .product-img:hover {
+        width: 150px;
+        /* Grows large */
+        height: 150px;
+        z-index: 99;
+        /* Makes it float ABOVE the other rows */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        transform: scale(1.1);
+        /* Optional: adds a slight extra zoom effect */
     }
 
     .total-price {
@@ -100,7 +128,7 @@ $result = mysqli_query($conn, $sql);
                     $imgPath = "../" . $row['image_url'];
             ?>
                     <tr>
-                        <td><img src="<?php echo $imgPath; ?>" width="60" height="60" class="product-img"></td>
+                        <td><img src="<?php echo $row['image_url']; ?>" class="product-img"></td>
                         <td><?php echo $row['name']; ?></td>
                         <td>$<?php echo number_format($row['price'], 2); ?></td>
                         <td><?php echo $row['quantity']; ?></td>
