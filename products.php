@@ -103,7 +103,17 @@ if (!$result) {
         </form>
     </div>
 
+    <div class="container mt-3">
+        <?php if (isset($_GET['status']) && $_GET['status'] == 'success') { ?>
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                <strong>Success!</strong> Item added to your OMEGA cart.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?>
+    </div>
+
     <div class="product-grid">
+
         <?php
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -124,7 +134,7 @@ if (!$result) {
                             <span class="price">$<?php echo $row['price']; ?></span>
                             <div class="btn-group">
                                 <a class="btn btn-details" href="details.php?id=<?php echo $row['id']; ?>">Details</a>
-                                <a href="user/cart.php?id=<?php echo $row['id']; ?>" class="btn">Add to Cart</a>
+                                <a href="user/add-to-cart.php?id=<?php echo $row['id']; ?>" class="btn">Add to Cart</a>
                             </div>
                         </div>
                     </div>

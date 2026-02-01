@@ -95,17 +95,19 @@ if (isset($_GET['id'])) {
                             <h1 class="fw-bold"><?php echo $product['name'] ?></h1>
                             <h3 class="text-primary mb-3">$<?php echo $product['price'] ?></h3>
                             <p class="text-muted"><?php echo $product['description'] ?></p>
-                            <div class="quentity">
-                                <form action="details.php" method="GET">
-                                    <label> Select Quentity : </label>
-                                    <input class="quentity" type="number" name="quentity" value="1" max="100">
-                                </form>
-                            </div>
+                            <form action="user/add-to-cart.php" method="GET">
+                                <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
 
-                            <div class="mt-4">
-                                <button class="btn btn-primary btn-lg px-4" href="user/cart.php?qut=<?php $_GET['quentity'] ?>">Add to Cart</button>
-                                <a href="products.php" class="btn btn-outline-secondary btn-lg ms-2">Back</a>
-                            </div>
+                                <div class="quentity mb-3">
+                                    <label> Select Quantity: </label>
+                                    <input class="quentity" type="number" name="qut" value="1" min="1" max="100">
+                                </div>
+
+                                <div class="mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg px-4">Add to Cart</button>
+                                    <a href="products.php" class="btn btn-outline-secondary btn-lg ms-2">Back</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
