@@ -15,13 +15,13 @@
                                 <a class="nav-link active" aria-current="page" href="home.php">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./admin/manage_products.php">Manage Products</a>
+                                <a class="nav-link" href="">Manage Products</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./admin/manage_users.php">Manage Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="./admin/manage_orders.php">Order Management</a>
+                                <a class="nav-link " href="##">Order Management</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="contact.php">Contact Us</a>
