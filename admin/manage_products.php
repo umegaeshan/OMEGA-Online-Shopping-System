@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $sql);
 
     <style>
         .table {
-            margin: 5rem 1rem;
+            margin: 3rem 1rem;
             width: 90%;
 
         }
@@ -49,6 +49,30 @@ $result = mysqli_query($conn, $sql);
         .table td {
             padding: 1rem 1rem;
         }
+
+        .blur-in {
+            font-family: sans-serif;
+            font-size: 3rem;
+            font-weight: bolder;
+            /* Apply the animation */
+            animation: blur-text 2s ease-in-out forwards;
+            margin-top: 2rem;
+        }
+
+        @keyframes blur-text {
+            0% {
+                filter: blur(12px);
+                opacity: 0;
+                transform: scale(0.9);
+                /* Optional: adds a slight zoom effect */
+            }
+
+            100% {
+                filter: blur(0px);
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 
 
@@ -57,6 +81,14 @@ $result = mysqli_query($conn, $sql);
 <body>
 
     <?php include '../includes/navbar.php';  ?>
+
+    <?php if ($_SESSION['role'] == 'admin') { ?>
+        <center>
+            <h1 class="blur-in">Manage Users || OMEGA</h1>
+        </center>
+    <?php } ?>
+
+
     <?php if (isset($_GET['msg'])): ?>
 
         <?php

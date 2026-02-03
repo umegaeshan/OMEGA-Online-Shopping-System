@@ -1,12 +1,38 @@
 <?php
-
-
-
 session_start();
 
+// 1. Ensure database connection is active
+$conn = mysqli_connect("localhost", "root", "", "login register 28");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// 2. Protect the page - Only Admin can enter
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    die('Access Denied!');
+}
+
+// 3. Process the Form Submission
+if (isset($_POST['add_product'])) {
+    $name =  $_POST['name'];
+    $description =  $_POST['description'];
+    $price = $_POST['price'];
+    $category = $_POST['category'];
+    $image_url =  $_POST['image_url'];
+    $is_new = isset($_POST['is_new']) ? 1 : 0;
+
+    // Use single quotes for all string values in SQL
+    $sql = "INSERT INTO products (name, description, price, category, image_url, is_new) 
+            VALUES ('$name', '$description', '$price', '$category', '$image_url', '$is_new')";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Product Added successfully!'); window.location='manage_products.php';</script>";
+    } else {
+        echo "ERROR: " . mysqli_error($conn);
+    }
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,25 +40,21 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Add Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Add Product | OMEGA</title>
     <style>
         .container {
             margin-top: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 600px;
+            /* Centering the form better */
         }
 
         .blur-in {
             font-family: sans-serif;
             font-size: 3rem;
             font-weight: bolder;
-            /* Apply the animation */
-            animation: blur-text 3s ease-in-out forwards;
-            margin-top: 3rem;
+            animation: blur-text 2s ease-in-out forwards;
+            margin-top: 2rem;
         }
 
         @keyframes blur-text {
@@ -40,7 +62,6 @@ session_start();
                 filter: blur(12px);
                 opacity: 0;
                 transform: scale(0.9);
-                /* Optional: adds a slight zoom effect */
             }
 
             100% {
@@ -54,69 +75,62 @@ session_start();
 
 <body>
 
-    <?php
-    // This pulls in the navbar
-    include '../includes/navbar.php';
-    ?>
+    <?php include '../includes/navbar.php'; ?>
 
-    <?php if ($_SESSION['role'] == 'admin') { ?>
-        <center>
-            <h1 class="blur-in">Welcome to Admin Panal</h1>
-        </center>
-    <?php } ?>
-    <div class="container">
+    <center>
+        <h1 class="blur-in">Add Product || OMEGA</h1>
+    </center>
 
-        <form class="row g-3">
-            <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4">
+    <div class="container bg-light p-4 rounded shadow-sm">
+        <form class="row g-3" method="POST" action="add_products.php">
+
+            <div class="col-md-12">
+                <label class="form-label">Product Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter product name" required>
             </div>
-            <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4">
+
+            <div class="col-md-12 mt-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="description" placeholder="Enter product details" style="height: 100px" required></textarea>
             </div>
-            <div class="col-12">
-                <label for="inputAddress" class="form-label">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+
+            <div class="col-md-6 mt-3">
+                <label class="form-label">Price</label>
+                <input type="number" name="price" class="form-control" placeholder="0.00" step="0.01" required>
             </div>
-            <div class="col-12">
-                <label for="inputAddress2" class="form-label">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="col-md-6">
-                <label for="inputCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="col-md-4">
-                <label for="inputState" class="form-label">State</label>
-                <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+
+            <div class="col-md-6 mt-3">
+                <label class="form-label">Category</label>
+                <select name="category" class="form-select" required>
+                    <option value="" selected disabled>Select Category</option>
+                    <option value="cloths">Cloths</option>
+                    <option value="computer">Computer</option>
+                    <option value="electric">Electric</option>
+                    <option value="shouse">Shouse</option>
+                    <option value="sport">Sport</option>
                 </select>
             </div>
-            <div class="col-md-2">
-                <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+
+            <div class="col-md-12 mt-3">
+                <label class="form-label">Image URL</label>
+                <input name="image_url" class="form-control" type="text" placeholder="images/product.jpg" required>
             </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
+
+            <div class="col-md-12 mt-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="is_new" id="isNew">
+                    <label class="form-check-label fw-bold" for="isNew">Mark as New Arrival</label>
                 </div>
             </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Sign in</button>
+
+            <div class="col-12 text-center mt-4">
+                <button type="submit" name="add_product" class="btn btn-primary px-5 py-2">Add Product</button>
+                <a href="manage_products.php" class="btn btn-outline-secondary px-5 py-2 ms-2">Back</a>
             </div>
         </form>
-
     </div>
 
-    <?php
-    // This pulls in the navbar
-    include '../includes/footer.php';
-    ?>
+    <?php include '../includes/footer.php'; ?>
 
 </body>
 
