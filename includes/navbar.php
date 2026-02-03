@@ -10,23 +10,25 @@
 
                     <a class="navbar-brand" href="#">OMEGA<sup style="background-color: red; color:white ; font-size: 10px; padding:2px; margin:2px; border-radius:2px ;" class="logo-lable">ADMIN</sup></a>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-3" style="font-size: 1.3rem;">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="home.php">Dashboard</a>
+                                <a class="nav-link active" href="/my/my projects/Login-Register-System-/home.php">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Manage Products</a>
+                                <a class="nav-link" href="/my/my projects/Login-Register-System-/admin/add_products.php">Add Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./admin/manage_users.php">Manage Users</a>
+                                <a class="nav-link" href="/my/my projects/Login-Register-System-/admin/manage_products.php">Edit Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="##">Order Management</a>
+                                <a class="nav-link" href="/my/my projects/Login-Register-System-/admin/manage_users.php">Manage Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="contact.php">Contact Us</a>
+                                <a class="nav-link" href="/my/my projects/Login-Register-System-/admin/manage_orders.php">Order Management</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="/my/my projects/Login-Register-System-/Contact.php">Contact Us</a>
+                            </li>
                         </ul>
                         <form class="d-flex  pe-5" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -36,7 +38,7 @@
                         <?php if (isset($_SESSION['username'])) { ?>
 
                             <div class="user-profile">
-                                <a type="button" href="./person_details.php" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <a type="button" href="../person_details.php" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                                     </svg></a>
