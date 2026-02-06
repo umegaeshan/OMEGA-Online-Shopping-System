@@ -173,6 +173,7 @@ $result = mysqli_query($conn, $sql);
                     <th>Quantity</th>
                     <th>Total</th>
                     <th> </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -197,6 +198,14 @@ $result = mysqli_query($conn, $sql);
                                 </a>
 
 
+                            </td>
+                            <td>
+                                <a href="cart.php?delete_id=<?php echo $row['id']; ?>"
+                                    style="padding:9px 12px ; background-color: green ; color:white; text-decoration:none ; border-radius: 10px;"
+                                    class="btn-delete"
+                                    onclick="return confirm('Perches this item?');">
+                                    Purches Product
+                                </a>
                             </td>
                         </tr>
                 <?php
