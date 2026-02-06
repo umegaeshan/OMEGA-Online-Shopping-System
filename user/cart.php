@@ -29,8 +29,7 @@ if (isset($_GET['delete_id'])) {
     exit();
 }
 
-if (isset($_GET["massage"])) {
-}
+
 
 
 $u_id = $_SESSION['id'];
@@ -159,6 +158,8 @@ $result = mysqli_query($conn, $sql);
         <?php } ?>
     </div>
 
+
+
     <div class="cart-container">
         <center>
             <h2>Your Shopping Cart</h2>
@@ -200,9 +201,9 @@ $result = mysqli_query($conn, $sql);
 
                             </td>
                             <td>
-                                <a href="cart.php?delete_id=<?php echo $row['id']; ?>"
+                                <a href="add-to-order.php?purches_id=<?php echo $row['id']; ?>"
                                     style="padding:9px 12px ; background-color: green ; color:white; text-decoration:none ; border-radius: 10px;"
-                                    class="btn-delete"
+                                    class="btn-Purches"
                                     onclick="return confirm('Perches this item?');">
                                     Purches Product
                                 </a>
