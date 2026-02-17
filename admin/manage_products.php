@@ -57,7 +57,7 @@ $result = mysqli_query($conn, $sql);
                     <tr>
                         <td><?php echo $row['id']; ?></td>
                         <td>
-                            <img src="../<?php echo $row['image_url']; ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius:5px;">
+                            <img src="<?php echo $row['image_url']; ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius:5px;">
                         </td>
                         <td><?php echo $row['name']; ?></td>
                         <td>$<?php echo $row['price']; ?></td>

@@ -27,7 +27,7 @@ if (isset($_GET['purches_id']) && isset($_SESSION['id'])) {
             mysqli_query($conn, $del_sql);
 
             // Redirect to the orders page with a success message
-            header("Location: order.php?status=ordered");
+            header("Location: orders.php?status=ordered");
             exit();
         }
     }

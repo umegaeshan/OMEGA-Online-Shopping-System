@@ -13,7 +13,7 @@
         }
         ?>
 
-        <a class="navbar-brand" href="<?php echo $path_prefix; ?>index.php">OMEGA
+        <a class="navbar-brand fw-bold" href="<?php echo $path_prefix; ?>index.php">OMEGA
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') { ?>
                 <sup style="background-color: red; color:white; font-size: 10px; padding:2px; border-radius:2px;">ADMIN</sup>
             <?php } ?>
@@ -38,16 +38,19 @@
                 <?php } ?>
             </ul>
 
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center gap-2">
                 <?php if (isset($_SESSION['username'])) { ?>
                     <div class="text-white me-3">
                         Hi, <b><?php echo $_SESSION['username']; ?></b>
                     </div>
-                    <a href="<?php echo $path_prefix; ?>person_details.php" class="btn btn-light btn-sm me-2">Profile</a>
-                    <a href="<?php echo $path_prefix; ?>logout.php" class="btn btn-danger btn-sm">Log Out</a>
+                    <a href="<?php echo $path_prefix; ?>person_details.php" class="btn btn-outline-light btn-sm fw-bold">Profile</a>
+
+                    <a href="<?php echo $path_prefix; ?>logout.php" class="btn btn-warning btn-sm fw-bold shadow-sm">Log Out</a>
+
                 <?php } else { ?>
-                    <a href="<?php echo $path_prefix; ?>index.php" class="btn btn-light me-2">Log In</a>
-                    <a href="<?php echo $path_prefix; ?>register.php" class="btn btn-warning">Register</a>
+                    <a href="<?php echo $path_prefix; ?>index.php" class="btn btn-outline-light fw-bold">Log In</a>
+
+                    <a href="<?php echo $path_prefix; ?>register.php" class="btn btn-warning fw-bold shadow-sm">Register</a>
                 <?php } ?>
             </div>
         </div>
