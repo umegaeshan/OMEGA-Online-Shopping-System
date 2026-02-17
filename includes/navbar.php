@@ -19,7 +19,7 @@
             <?php } ?>
         </a>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <div class="collapse navbar-collapse ms-5" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-3" style="font-size: 1.1rem;">
 
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') { ?>
