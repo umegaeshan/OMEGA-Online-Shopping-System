@@ -1,7 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  box-sizing: 0px;
+  box-sizing: border-box; /* Fixed: 0px is invalid, use border-box */
 }
 
 .product-card {
@@ -111,7 +111,10 @@
   font-size: 1.2rem;
 }
 
-.btn {
+/* --- FIX START HERE --- */
+/* We use .product-card .btn to make sure it only affects buttons inside the card */
+
+.product-card .btn {
   background: #007bff;
   color: white;
   border: none;
@@ -120,21 +123,23 @@
   cursor: pointer;
   box-shadow: 1px 1px 1px black;
   font-weight: bolder;
+  text-decoration: none;
 }
 
-.btn:hover {
+.product-card .btn:hover {
   background: #fbff19;
   color: rgb(0, 0, 0);
   font-weight: bolder;
   box-shadow: 1px 1px 1px black;
 }
 
-.btn-details {
+.product-card .btn-details {
   background-color: black;
   color: white;
   font-weight: bold;
 }
 
-.btn-details:hover {
+.product-card .btn-details:hover {
   background-color: rgb(235, 242, 245);
 }
+/* --- FIX END HERE --- */
