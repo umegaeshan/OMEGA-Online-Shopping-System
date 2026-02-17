@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="email" class="form-control" name="email" id="regEmail" placeholder="name@example.com" required>
                                 <label for="regEmail">Email Address</label>
                             </div>
-
+                            -
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control" name="password" id="regPass" placeholder="Password" required>
                                 <label for="regPass">Password</label>
