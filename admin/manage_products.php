@@ -1,23 +1,22 @@
 <?php
-
+session_start();
 $conn = mysqli_connect("localhost", "root", "", "login register 28");
 
-session_start();
-
-if (($_SESSION["role"] != 'admin')) {
-
-    die("Access Denided ! ");
+if (!isset($_SESSION["role"]) || $_SESSION["role"] != 'admin') {
+    die("Access Denied!");
 }
 
+// Delete Logic
+if (isset($_GET['delete_id'])) {
+    $id = $_GET['delete_id'];
+    mysqli_query($conn, "DELETE FROM products WHERE id=$id");
+    header("Location: manage_products.php?msg=deleted");
+    exit();
+}
 
-
-$sql = "SELECT * FROM products";
-
+$sql = "SELECT * FROM products ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,123 +24,55 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Manage Products</title>
-
-    <style>
-        .table {
-            margin: 3rem 1rem;
-            width: 90%;
-
-        }
-
-        .container {
-            display: flex;
-            align-items: center;
-
-        }
-
-        .table th {
-            padding: 2rem 1rem;
-        }
-
-        .table td {
-            padding: 1rem 1rem;
-        }
-
-        .blur-in {
-            font-family: sans-serif;
-            font-size: 3rem;
-            font-weight: bolder;
-            /* Apply the animation */
-            animation: blur-text 2s ease-in-out forwards;
-            margin-top: 2rem;
-        }
-
-        @keyframes blur-text {
-            0% {
-                filter: blur(12px);
-                opacity: 0;
-                transform: scale(0.9);
-                /* Optional: adds a slight zoom effect */
-            }
-
-            100% {
-                filter: blur(0px);
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    </style>
-
-
 </head>
 
 <body>
 
-    <?php include '../includes/navbar.php';  ?>
+    <?php include '../includes/navbar.php'; ?>
 
-    <?php if ($_SESSION['role'] == 'admin') { ?>
+    <div class="container mt-5">
         <center>
-            <h1 class="blur-in">Manage Users || OMEGA</h1>
+            <h2 class="mb-4">Manage Products</h2>
         </center>
-    <?php } ?>
 
+        <?php if (isset($_GET['msg']) && $_GET['msg'] == 'deleted') { ?>
+            <div class="alert alert-success">Product deleted successfully!</div>
+        <?php } ?>
 
-    <?php if (isset($_GET['msg'])): ?>
-
-        <?php
-        $is_deleted = ($_GET['msg'] == 'deleted');
-        $color = $is_deleted ? '#2ecc71' : '#e74c3c';
-        $text = $is_deleted ? ' deleted successfully!' : 'An error occurred.';
-        ?>
-
-        <div id="alert" style="background: white; border: 1px solid <?php echo $color; ?>; color: <?php echo $color; ?>; padding: 15px; margin: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; font-family: sans-serif;">
-
-            <span><strong>Notice:</strong> <?php echo $text; ?></span>
-
-            <button onclick="document.getElementById('alert').style.display='none'" style="background: none; border: none; font-size: 20px; cursor: pointer; color: <?php echo $color; ?>;">
-                &times;
-            </button>
-
-        </div>
-    <?php endif; ?>
-
-    <div class="container">
-        <table class="table table-dark table-hover">
-            <thead>
+        <table class="table table-bordered table-hover shadow-sm">
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
+                    <th>Image</th>
+                    <th>Name</th>
                     <th>Price</th>
-                    <th>Description</th>
-                    <th></th>
-                    <th></th>
+                    <th>Category</th>
+                    <th>Action</th>
                 </tr>
             </thead>
-            <tbody> <?php while ($row = mysqli_fetch_array($result)) { ?>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                         <td><?php echo $row['id']; ?></td>
-                        <td><?php $row['image_url']; ?></td>
+                        <td>
+                            <img src="../<?php echo $row['image_url']; ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius:5px;">
+                        </td>
                         <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['price']; ?></td>
-                        <td><?php echo $row['description']; ?></td>
-                        <td><a href="edit-user.php?id=<?php echo $row['id']; ?>"><button class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="delete-user.php?id=<?php echo $row['id']; ?>"><button class="btn btn-danger">Delete</button></a></td>
+                        <td>$<?php echo $row['price']; ?></td>
+                        <td><?php echo $row['category']; ?></td>
+                        <td>
+                            <a href="edit_products.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="manage_products.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</a>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
-
     </div>
 
-    <?php include '../includes/footer.php';  ?>
-
-
-
-
+    <?php include '../includes/footer.php'; ?>
 </body>
 
 </html>
