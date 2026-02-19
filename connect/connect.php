@@ -1,10 +1,10 @@
 <?php
 // databaase connection
 
-$localhost = "localhost";
-$user = "root";
-$password = "";
-$database = "login register 28";
+$localhost = "sql301.infinityfree.com";
+$user = "if0_41198448";
+$password = "eESpwA1g2Ysu";
+$database = "if0_41198448_if0_41198448_omega";
 
 $conn = new mysqli($localhost, $user, $password, $database);
 

@@ -2,7 +2,7 @@
 session_start();
 
 // 1. Connection to your database
-$conn = mysqli_connect("localhost", "root", "", "login register 28");
+$conn = mysqli_connect("sql301.infinityfree.com", "if0_41198448", "eESpwA1g2Ysu", "if0_41198448_if0_41198448_omega");
 
 // 2. Check if the user is actually logged in
 if (!isset($_SESSION['id'])) {

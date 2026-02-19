@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "login register 28");
+$conn = mysqli_connect("sql301.infinityfree.com", "if0_41198448", "eESpwA1g2Ysu", "if0_41198448_if0_41198448_omega");
 
 if (!isset($_SESSION['id'])) {
     echo "<div class='alert alert-danger m-5'>Please log in to view your Orders.</div>";
@@ -12,7 +12,7 @@ if (isset($_GET['delete_id'])) {
     $del_id = $_GET['delete_id'];
     $del_sql = "DELETE FROM orders WHERE id = $del_id";
     mysqli_query($conn, $del_sql);
-    header("Location: order.php?message=deleted");
+    header("Location: orders.php?message=deleted");
     exit();
 }
 
@@ -97,7 +97,7 @@ $result = mysqli_query($conn, $sql);
                             <td>$<?php echo number_format($row['price'] * $row['quantity'], 2); ?></td>
                             <td><span class="badge bg-warning"><?php echo $row['status']; ?></span></td>
                             <td>
-                                <a href="order.php?delete_id=<?php echo $row['id']; ?>"
+                                <a href="orders.php?delete_id=<?php echo $row['id']; ?>"
                                     class="btn btn-danger btn-sm"
                                     onclick="return confirm('Cancel this order?');">Cancel</a>
                             </td>

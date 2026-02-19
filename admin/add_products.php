@@ -2,7 +2,7 @@
 session_start();
 
 // 1. Ensure database connection is active
-$conn = mysqli_connect("localhost", "root", "", "login register 28");
+$conn = mysqli_connect("sql301.infinityfree.com", "if0_41198448", "eESpwA1g2Ysu", "if0_41198448_if0_41198448_omega");
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
