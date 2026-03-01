@@ -57,10 +57,8 @@ if (!$result) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Product OMEGA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/products.css">
 </head>
 
@@ -75,27 +73,39 @@ if (!$result) {
         <form action="products.php" method="GET">
             <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand ms-5 me-5" href="products.php">Filter</a>
-                    <div class="collapse navbar-collapse">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <select name="category" class="ms-1 p-1">
+                    <a class="navbar-brand ms-md-4" href="products.php">Filter</a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterNavbar" aria-controls="filterNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="filterNavbar">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
+
+                            <li class="nav-item me-lg-4 mb-2 mb-lg-0 mt-2 mt-lg-0">
+                                <select name="category" class="form-select form-select-sm w-auto">
                                     <option value="all" <?php if ($cat == 'all') echo 'selected'; ?>>All Category</option>
-                                    <option value="shouse" <?php if ($cat == 'shouse') echo 'selected'; ?>>Shouse</option>
-                                    <option value="cloths" <?php if ($cat == 'cloths') echo 'selected'; ?>>Cloths</option>
+                                    <option value="shouse" <?php if ($cat == 'shouse') echo 'selected'; ?>>Shoes</option>
+                                    <option value="cloths" <?php if ($cat == 'cloths') echo 'selected'; ?>>Clothes</option>
                                     <option value="computer" <?php if ($cat == 'computer') echo 'selected'; ?>>Computer</option>
                                     <option value="sport" <?php if ($cat == 'sport') echo 'selected'; ?>>Sport</option>
                                 </select>
                             </li>
-                            <li class="price-filter mt-1 ms-5 me-5">
-                                <label class="ms-5 me-5" style="color:white"> Min prices </label>
-                                <input type="number" name="min_price" value="<?php echo $min; ?>" placeholder="Min" style="padding-left: 1rem; width:5rem;">
 
-                                <label class="ms-5 me-5" style="color:white"> Max prices </label>
-                                <input type="number" name="max_price" value="<?php echo $max; ?>" placeholder="Max" style="padding-left: 1rem; width:5rem;">
+                            <li class="nav-item price-filter me-lg-4 mb-2 mb-lg-0">
+                                <div class="d-flex align-items-center flex-wrap gap-2 text-white">
+                                    <label>Min Price</label>
+                                    <input type="number" name="min_price" class="form-control form-control-sm" value="<?php echo $min; ?>" placeholder="Min" style="width: 80px;">
+
+                                    <label class="ms-lg-2">Max Price</label>
+                                    <input type="number" name="max_price" class="form-control form-control-sm" value="<?php echo $max; ?>" placeholder="Max" style="width: 80px;">
+                                </div>
                             </li>
-                            <li> <button class="btn btn-secondary ms-5 me-5" type="submit">Apply Filter</button></li>
-                            <li> <a href="products.php" class="btn btn-outline-danger btn-sm">Reset</a></li>
+
+                            <li class="nav-item d-flex gap-2 mt-2 mt-lg-0">
+                                <button class="btn btn-secondary btn-sm" type="submit">Apply Filter</button>
+                                <a href="products.php" class="btn btn-outline-danger btn-sm">Reset</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -120,7 +130,7 @@ if (!$result) {
         ?>
                 <div class="product-card">
                     <div class="image-box">
-                        <?php if ($row['is_new']) { ?>
+                        <?php if (isset($row['is_new']) && $row['is_new']) { ?>
                             <span class="badge">New Arrival</span>
                         <?php } ?>
 
@@ -129,7 +139,7 @@ if (!$result) {
 
                     <div class="card-body">
                         <h3><?php echo $row['name']; ?></h3>
-                        <p><?php echo $row['description']; ?></p>
+                        <p><?php echo isset($row['description']) ? $row['description'] : ''; ?></p>
                         <div class="card-footer">
                             <span class="price">$<?php echo $row['price']; ?></span>
                             <div class="btn-group">
@@ -142,7 +152,7 @@ if (!$result) {
         <?php
             } // while ends here
         } else {
-            echo "<p style='grid-column: span 4; text-align: center;'>No products found.</p>";
+            echo "<p class='no-products'>No products found.</p>";
         }
         ?>
     </div>
@@ -150,6 +160,8 @@ if (!$result) {
     <?php
     include 'includes/footer.php';
     ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
 
