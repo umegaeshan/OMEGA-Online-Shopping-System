@@ -1,11 +1,11 @@
-/* Hero Section Styling */
+/* Hero Section Styling (Default/Desktop) */
 .about-hero {
   background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
   padding: 80px 0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Blur-in Animation from your home page */
+/* Blur-in Animation */
 @keyframes blurIn {
   from {
     filter: blur(10px);
@@ -45,4 +45,32 @@
 /* Typography spacing */
 .text-muted {
   line-height: 1.8;
+}
+
+/* =========================================
+   Mobile Responsive Rules 
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* Mobile එකේදී Hero section එකේ උඩින් සහ යටින් තියෙන ඉඩ (Padding) අඩු කිරීම */
+  .about-hero {
+    padding: 40px 0;
+  }
+
+  /* Phone වල performance හොඳ වෙන්න animation එක ටිකක් වේගවත් කිරීම */
+  .blur-in {
+    animation: blurIn 1s ease-out;
+  }
+
+  /* Text එකේ පරතරය Phone එකට ගැලපෙන්න පොඩ්ඩක් අඩු කිරීම */
+  .text-muted {
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  /* Value Card එකේ ඉඩකඩ කළමනාකරණය */
+  .value-card h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
 }
